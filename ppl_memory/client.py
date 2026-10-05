@@ -1,8 +1,8 @@
-"""HTTP client for the ppl.gift REST API.
+"""HTTP client for the withppl.com REST API.
 
 ppl is a personal CRM. This client talks to the hosted API at
-https://ppl.gift/api using a Bearer token (the user's ppl API token,
-created at https://ppl.gift/settings/agents).
+https://withppl.com/api using a Bearer token (the user's ppl API token,
+created at https://withppl.com/settings/agents).
 
 All network I/O is synchronous (built on urllib) and dependency-free.
 Framework adapters run it in a thread for async interfaces.
@@ -17,7 +17,7 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
-DEFAULT_BASE_URL = "https://ppl.gift"
+DEFAULT_BASE_URL = "https://withppl.com"
 TOKEN_ENV_VAR = "PPL_API_TOKEN"
 
 
@@ -31,7 +31,7 @@ class PplError(Exception):
 
 
 class PplClient:
-    """Thin Bearer-authenticated client for the ppl.gift API."""
+    """Thin Bearer-authenticated client for the withppl.com API."""
 
     def __init__(
         self,
@@ -43,7 +43,7 @@ class PplClient:
         if not token:
             raise PplError(
                 f"No API token. Pass api_token= or set the {TOKEN_ENV_VAR} "
-                "environment variable (create one at https://ppl.gift/settings/agents)."
+                "environment variable (create one at https://withppl.com/settings/agents)."
             )
         self.api_token = token
         self.base_url = base_url.rstrip("/")
@@ -87,7 +87,7 @@ class PplClient:
                 payload=payload,
             ) from exc
         except urllib.error.URLError as exc:
-            raise PplError(f"Could not reach ppl.gift ({exc.reason}).") from exc
+            raise PplError(f"Could not reach withppl.com ({exc.reason}).") from exc
 
         if not raw.strip():
             return None

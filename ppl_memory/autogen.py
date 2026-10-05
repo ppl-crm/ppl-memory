@@ -44,12 +44,12 @@ RESET_MARKER = "[ppl-autogen]"
 
 class PplMemoryConfig(BaseModel):
     name: str | None = None
-    base_url: str = "https://ppl.gift"
+    base_url: str = "https://withppl.com"
     default_contact: int | str | None = None
 
 
 class PplMemory(Memory, Component[PplMemoryConfig]):
-    """AutoGen Memory backed by ppl (https://ppl.gift).
+    """AutoGen Memory backed by ppl (https://withppl.com).
 
     Args:
         api_token: ppl API token (or PPL_API_TOKEN env var). Not stored in the
@@ -72,7 +72,7 @@ class PplMemory(Memory, Component[PplMemoryConfig]):
         name: str | None = None,
     ) -> None:
         self._name = name or "ppl_memory"
-        self.client = PplClient(api_token=api_token, base_url=base_url or "https://ppl.gift")
+        self.client = PplClient(api_token=api_token, base_url=base_url or "https://withppl.com")
         self.default_contact = default_contact
         self._contact_cache: dict[str, int] = {}
 

@@ -1,4 +1,4 @@
-"""Tests for ppl_memory.client. Network is fully mocked; no ppl.gift calls."""
+"""Tests for ppl_memory.client. Network is fully mocked; no withppl.com calls."""
 
 import io
 import json

@@ -121,11 +121,11 @@ def _parse_dt(value: Any) -> datetime:
 
 
 class PplCrewAIStorage:
-    """CrewAI unified-memory storage backend backed by ppl (https://ppl.gift).
+    """CrewAI unified-memory storage backend backed by ppl (https://withppl.com).
 
     Args:
         api_token: ppl API token (or PPL_API_TOKEN env var).
-        base_url: ppl base URL, defaults to https://ppl.gift.
+        base_url: ppl base URL, defaults to https://withppl.com.
         default_contact: contact id or name used when a record carries no
             contact reference. Falls back to PPL_DEFAULT_CONTACT env var.
     """
@@ -136,7 +136,7 @@ class PplCrewAIStorage:
         base_url: str | None = None,
         default_contact: int | str | None = None,
     ) -> None:
-        self.client = PplClient(api_token=api_token, base_url=base_url or "https://ppl.gift")
+        self.client = PplClient(api_token=api_token, base_url=base_url or "https://withppl.com")
         self.default_contact = default_contact or os.environ.get("PPL_DEFAULT_CONTACT")
         self._contact_cache: dict[str, int] = {}
 

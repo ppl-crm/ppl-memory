@@ -1,6 +1,6 @@
 # ppl-memory
 
-ppl ([ppl.gift](https://ppl.gift)) as a memory backend for agent frameworks.
+ppl ([withppl.com](https://withppl.com)) as a memory backend for agent frameworks.
 
 ppl is a personal CRM. This package makes it the memory layer for your agents:
 agents remember facts about people and recall them in later sessions, without
@@ -17,7 +17,7 @@ Supported frameworks (one package, framework extras):
 
 ## Setup
 
-1. Create an API token at [ppl.gift/settings/agents](https://ppl.gift/settings/agents).
+1. Create an API token at [withppl.com/settings/agents](https://withppl.com/settings/agents).
 2. Export it:
 
 ```bash
@@ -142,7 +142,7 @@ client.get_briefing()                       # morning briefing
 - Memories are stored as notes on contact timelines in ppl. They are visible
   in the ppl web app, which is the point: the user's memory is inspectable.
 - The human never handles the token for framework setup beyond the one-time
-  export; the agent drives the rest via [ppl.gift/agents](https://ppl.gift/agents).
+  export; the agent drives the rest via [withppl.com/agents](https://withppl.com/agents).
 - Not affiliated with LangChain, CrewAI, or Microsoft. ppl is a standalone
   personal CRM by Cumulative Systems.
 

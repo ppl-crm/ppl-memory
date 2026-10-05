@@ -1,6 +1,6 @@
 """ppl as a memory backend for agent frameworks.
 
-ppl (https://ppl.gift) is a personal CRM. This package makes it the memory
+ppl (https://withppl.com) is a personal CRM. This package makes it the memory
 layer for agents built on LangGraph, CrewAI, or AutoGen: agents remember
 facts about people, and recall them in later sessions, without keeping
 anything in their own context.

@@ -56,7 +56,7 @@ def _fact_text(value: dict[str, Any]) -> str:
 
 
 class PplStore(BaseStore):
-    """A LangGraph BaseStore backed by ppl (https://ppl.gift)."""
+    """A LangGraph BaseStore backed by ppl (https://withppl.com)."""
 
     def __init__(
         self,
@@ -64,7 +64,7 @@ class PplStore(BaseStore):
         base_url: str | None = None,
         default_contact: int | str | None = None,
     ) -> None:
-        self.client = PplClient(api_token=api_token, base_url=base_url or "https://ppl.gift")
+        self.client = PplClient(api_token=api_token, base_url=base_url or "https://withppl.com")
         self.default_contact = default_contact
         self._contact_cache: dict[str, int] = {}
 

@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ppl-memory"
 version = "0.1.0"
-description = "ppl (ppl.gift) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen"
+description = "ppl (withppl.com) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -26,7 +26,7 @@ crewai = ["crewai>=1.0"]
 autogen = ["autogen-core>=0.4"]
 
 [project.urls]
-Homepage = "https://ppl.gift"
+Homepage = "https://withppl.com"
 Repository = "https://github.com/ppl-crm/ppl-memory"
 Documentation = "https://github.com/ppl-crm/ppl-memory#readme"
 
