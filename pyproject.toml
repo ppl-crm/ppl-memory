@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ppl-memory"
-version = "0.2.0"
-description = "ppl (withppl.com) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen"
+version = "0.3.0"
+description = "ppl (withppl.com) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen, Mem0, LlamaIndex, OpenAI Agents SDK, Semantic Kernel"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Cumulative Systems", email = "dbhurley@me.com" }]
-keywords = ["ppl", "memory", "crm", "agents", "langgraph", "crewai", "autogen"]
+keywords = ["ppl", "memory", "crm", "agents", "langgraph", "crewai", "autogen", "mem0", "llamaindex", "openai-agents", "semantic-kernel"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -25,6 +25,9 @@ langchain = ["langgraph>=0.6"]
 crewai = ["crewai>=1.0"]
 autogen = ["autogen-core>=0.4"]
 mem0 = ["mem0ai>=0.1"]
+llamaindex = ["llama-index-core>=0.12"]
+openai-agents = ["openai-agents>=0.1"]
+semantic-kernel = ["semantic-kernel>=1.0"]
 
 [project.urls]
 Homepage = "https://withppl.com"
