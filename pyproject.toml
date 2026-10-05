@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ppl-memory"
+version = "0.1.0"
+description = "ppl (ppl.gift) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Cumulative Systems", email = "dbhurley@me.com" }]
+keywords = ["ppl", "memory", "crm", "agents", "langgraph", "crewai", "autogen"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+langchain = ["langgraph>=0.6"]
+crewai = ["crewai>=1.0"]
+autogen = ["autogen-core>=0.4"]
+
+[project.urls]
+Homepage = "https://ppl.gift"
+Repository = "https://github.com/ppl-crm/ppl-memory"
+Documentation = "https://github.com/ppl-crm/ppl-memory#readme"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ppl_memory"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
