@@ -14,6 +14,7 @@ Supported frameworks (one package, framework extras):
 | LangGraph | `ppl-memory[langchain]` | `PplStore` (BaseStore) |
 | CrewAI | `ppl-memory[crewai]` | `PplCrewAIStorage` (StorageBackend) |
 | AutoGen 0.4 | `ppl-memory[autogen]` | `PplMemory` (Memory) |
+| Mem0 | `ppl-memory[mem0]` | `PplMem0` (MemoryBase) |
 
 ## Setup
 
@@ -29,7 +30,7 @@ Optionally set a default contact for memories: `export PPL_DEFAULT_CONTACT="Jane
 3. Install the extra for your framework:
 
 ```bash
-pip install ppl-memory[langchain]   # or [crewai], or [autogen]
+pip install ppl-memory[langchain]   # or [crewai], [autogen], or [mem0]
 ```
 
 ## LangGraph
@@ -123,6 +124,37 @@ asyncio.run(main())
 `update_context()` takes the latest user message, queries ppl for relevant
 memories, and adds them as a system message. `clear()` is a deliberate no-op:
 ppl holds real CRM history and must not be wiped by a memory reset.
+
+## Mem0
+
+`PplMem0` subclasses mem0's `MemoryBase`, so it works anywhere a Mem0 memory
+store is expected, with Mem0-style `add`/`search` result shapes.
+
+```python
+from ppl_memory.mem0 import PplMem0
+
+memory = PplMem0(default_contact="Jane Smith")
+
+# add: messages as a string or [{"role": ..., "content": ...}] list
+result = memory.add(
+    [{"role": "user", "content": "Jane's birthday is Friday."}],
+    user_id="Jane Smith",
+)
+print(result["results"][0]["id"])
+
+# search
+hits = memory.search("When is Jane's birthday?", user_id="Jane Smith")
+print(hits["results"][0]["memory"])
+
+# get / get_all / update / delete / history follow the MemoryBase interface
+mem = memory.get(result["results"][0]["id"])
+memory.update(mem["id"], "Jane's birthday is Saturday, not Friday.")
+memory.delete(mem["id"])
+```
+
+`user_id` selects the ppl contact (id or name); `default_contact` is the
+fallback. `delete_all()` and `reset()` are deliberate no-ops: ppl is the
+system of record and is never wiped by an adapter.
 
 ## Raw client
 
