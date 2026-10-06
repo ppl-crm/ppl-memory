@@ -2,7 +2,7 @@
 
 ppl is a personal CRM. This client talks to the hosted API at
 https://withppl.com/api using a Bearer token (the user's ppl API token,
-created at https://withppl.com/settings/agents).
+created at https://withppl.com/settings/agents/setup).
 
 All network I/O is synchronous (built on urllib) and dependency-free.
 Framework adapters run it in a thread for async interfaces.
@@ -43,7 +43,7 @@ class PplClient:
         if not token:
             raise PplError(
                 f"No API token. Pass api_token= or set the {TOKEN_ENV_VAR} "
-                "environment variable (create one at https://withppl.com/settings/agents)."
+                "environment variable (create one at https://withppl.com/settings/agents/setup)."
             )
         self.api_token = token
         self.base_url = base_url.rstrip("/")

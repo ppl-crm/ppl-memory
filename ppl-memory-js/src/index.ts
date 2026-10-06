@@ -42,7 +42,7 @@ function resolveToken(apiToken?: string): string {
   if (!token) {
     throw new Error(
       'No API token. Pass apiToken= or set the PPL_API_TOKEN environment variable ' +
-        '(create one at https://withppl.com/settings/agents).'
+        '(create one at https://withppl.com/settings/agents/setup).'
     );
   }
   return token;

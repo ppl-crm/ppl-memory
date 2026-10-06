@@ -18,11 +18,11 @@ Supported frameworks (one package, framework extras):
 | LlamaIndex | `ppl-memory[llamaindex]` | `PplMemoryBlock` (BaseMemoryBlock) |
 | OpenAI Agents SDK | `ppl-memory[openai-agents]` | `PplSession` (Session) |
 | Semantic Kernel | `ppl-memory[semantic-kernel]` | `PplMemoryPlugin` (kernel functions) |
-| Vercel AI SDK | `npm install ppl-memory` | `createPplTools()` (AI SDK tools, in `ppl-memory-js/`) |
+| Vercel AI SDK | from source (not on npm yet) | `createPplTools()` (AI SDK tools, in `ppl-memory-js/`) |
 
 ## Setup
 
-1. Create an API token at [withppl.com/settings/agents](https://withppl.com/settings/agents).
+1. Create an API token at [withppl.com/settings/agents/setup](https://withppl.com/settings/agents/setup).
 2. Export it:
 
 ```bash
@@ -38,8 +38,9 @@ pip install ppl-memory[langchain]   # or [crewai], [autogen], [mem0],
                                     # [llamaindex], [openai-agents], or [semantic-kernel]
 ```
 
-TypeScript users (Vercel AI SDK): `npm install ppl-memory` (same name, same
-repo, in `ppl-memory-js/`; see that directory's README).
+TypeScript users (Vercel AI SDK): the package lives in `ppl-memory-js/` in this
+repo and is not published to npm yet. Build it from source; see that
+directory's README.
 
 ## LangGraph
 
