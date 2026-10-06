@@ -10,14 +10,21 @@ inspectable in the ppl web app.
 
 ## Install
 
+Not published to npm yet. Build and install from source:
+
 ```bash
-npm install ppl-memory
+git clone https://github.com/ppl-crm/ppl-memory.git
+cd ppl-memory/ppl-memory-js
+npm install
+npm run build
+# then, from your project:
+npm install /path/to/ppl-memory/ppl-memory-js
 ```
 
 ## Setup
 
 Create an API token at
-[withppl.com/settings/agents](https://withppl.com/settings/agents) and export
+[withppl.com/settings/agents/setup](https://withppl.com/settings/agents/setup) and export
 it:
 
 ```bash
