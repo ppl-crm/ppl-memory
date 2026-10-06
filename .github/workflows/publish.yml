@@ -1,4 +1,4 @@
-name: Publish to PyPI
+name: Publish to PyPI and npm
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  publish-pypi:
     runs-on: ubuntu-latest
     environment: ppl-memory
     steps:
@@ -29,3 +29,41 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    environment: ppl-memory
+    steps:
+      - uses: actions/checkout@v4
+
+      # Node 24 ships npm 11.5.1+, the minimum for OIDC trusted publishing.
+      # Node 22 ships npm 10 and will fail.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        working-directory: ppl-memory-js
+        run: npm ci
+
+      - name: Build package
+        working-directory: ppl-memory-js
+        run: npm run build
+
+      - name: Run tests
+        working-directory: ppl-memory-js
+        run: npm test
+
+      # OIDC trusted publishing: no NODE_AUTH_TOKEN here (it must be absent
+      # so npm falls back to the OIDC token exchange). Requires the one-time
+      # setup on npmjs.com: package Settings -> Trusted Publisher ->
+      # GitHub Actions (org ppl-crm, repo ppl-memory, workflow publish.yml,
+      # environment ppl-memory, allow npm publish). The very first publish
+      # of a new package cannot use OIDC; do it once by hand with
+      # `npm login` + `npm publish --access public`, then configure the
+      # trusted publisher for all later releases.
+      - name: Publish to npm
+        working-directory: ppl-memory-js
+        run: npm publish --provenance --access public
