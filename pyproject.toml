@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ppl-memory"
-version = "0.3.0"
+version = "0.3.1"
 description = "ppl (withppl.com) as a memory backend for agent frameworks: LangGraph, CrewAI, AutoGen, Mem0, LlamaIndex, OpenAI Agents SDK, Semantic Kernel"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -39,3 +39,7 @@ packages = ["ppl_memory"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.llamahub]
+contains_example = true
+import_path = "ppl_memory.llama_index"
